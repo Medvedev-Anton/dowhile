@@ -4,4 +4,6 @@
     --color-light-coffee: #E6E3DE;
     --color-dark-coffee: #DED2C6;
     --border: 2px solid var(--color-dark);
+    
+    --transition-duration: 0,2;
 }
