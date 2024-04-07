@@ -1,3 +1,11 @@
+@font-face {
+    font-family: 'Inter';
+    src: url(../Fonts/Inter-Medium.woff2) format('woff2');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
 :root {
     --color-white: #F2F2F2;
     --color-dark: #050618;
@@ -7,4 +15,23 @@
     --margine: 32px;
     
     --transition-duration: 0,2;
+}
+
+body { 
+    background-color: var(--color-white);
+    font-family: Inter;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    column-gap: 20px;
+    padding: 10px 32px;
+}
+
+.header__menu-list {
+    display: flex;
+    column-gap: 50px;
+    
 }
