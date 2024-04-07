@@ -5,14 +5,22 @@
     font-style: normal;
     font-display: swap;
 }
+@font-face {
+    font-family: 'Inter';
+    src: url(../Fonts/Inter-SemiBold.woff2) format('woff2');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
 
 :root {
     --color-white: #F2F2F2;
     --color-dark: #050618;
+    --color-dark-active: #848484;
     --color-light-coffee: #E6E3DE;
     --color-dark-coffee: #DED2C6;
     --border: 2px solid var(--color-dark);
-    --margine: 32px;
+    --margine: 18px 18px;
     
     --transition-duration: 0,2;
 }
@@ -22,16 +30,40 @@ body {
     font-family: Inter;
 }
 
+a {
+    color: var(--color-dark);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--color-white);
+}
+
 .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     column-gap: 20px;
-    padding: 10px 32px;
+    padding: 0 32px;
+}
+
+.header {
+    margin: var(--margine);
+    background-color: var(--color-dark-coffee);
 }
 
 .header__menu-list {
     display: flex;
     column-gap: 50px;
-    
+}
+
+.header__menu-link {
+    padding: 0 20px;
+    display: inline-flex;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 600;
+    height: 90px;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
 }
