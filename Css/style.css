@@ -1,42 +1,97 @@
 @font-face {
-    font-family: 'Inter';
-    src: url(../Fonts/Inter-Medium.woff2) format('woff2');
-    font-weight: 500;
+    font-family: 'Heebo';
+    src: url(../Fonts/Heebo-Thin.woff2) format('woff2');
+    font-weight: 300;
     font-style: normal;
     font-display: swap;
 }
 @font-face {
-    font-family: 'Inter';
-    src: url(../Fonts/Inter-SemiBold.woff2) format('woff2');
-    font-weight: 600;
+    font-family: 'Heebo';
+    src: url(../Fonts/Heebo-Bold.woff2) format('woff2');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Yantramanav';
+    src: url(../Fonts/Yantramanav-Bold.woff2) format('woff2');
+    font-weight: 700;
     font-style: normal;
     font-display: swap;
 }
 
 :root {
-    --color-white: #F2F2F2;
-    --color-dark: #050618;
-    --color-dark-active: #848484;
-    --color-light-coffee: #E6E3DE;
-    --color-dark-coffee: #DED2C6;
-    --border: 2px solid var(--color-dark);
+    --color-light: #FFFFFF;
+    --color-dark: #000000;
+    --color-dark-gray: #404040;
+    --color-light-gray: #C4C4C4;
+    --border: 1px solid var(--color-light);
+    --border-radius: 30px;
     --margine: 18px 18px;
+
+    --font-family-base: 'Heebo', sans-serif;
+    --font-family-accent: 'Yantramanav', sans-serif;
     
-    --transition-duration: 0,2;
+    --input-height: 54px;
+
+    --container-width: 1300px;
+    --container-padding-x: 15px;
+
+    --transition-duration: 0,2s;
 }
 
 body { 
-    background-color: var(--color-white);
-    font-family: Inter;
+    background-color: var(--color-dark);
+    color: var(--color-light-gray);
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 1.75;
+    font-family: var(--font-family-base);
+}
+
+.container {
+    max-width: calc(var(--container-width) + var(--container-padding-x) * 2);
+    margin-inline: auto;
+    padding-inline: var(--container-padding-x);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+a, button, textarea, input, svg * {
+    transition-duration: var(--transition-duration);
 }
 
 a {
-    color: var(--color-dark);
+    color: var(--color-light);
     text-decoration: none;
+    cursor: pointer;
 }
 
 a:hover {
-    color: var(--color-white);
+    color: var(--color-light-gray);
+}
+
+.button {
+    display: inline-flex;
+    align-items: center;
+    padding-inline: 26px;
+    height: 38px;
+    white-space: nowrap;
+    font-size: 12px;
+    line-height: 2;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    font-weight: 700;
+    background-color: var(--color-light);
+    border: none;
+    border-radius: var(--border-radius);
+}
+
+.button:hover {
+    background-color: var(--color-light-gray);
 }
 
 .header {
@@ -44,13 +99,45 @@ a:hover {
     justify-content: space-between;
     align-items: center;
     column-gap: 20px;
-    padding: 0 32px;
+    padding-inline: 32px;
 }
 
-.header {
-    margin: var(--margine);
-    background-color: var(--color-dark-coffee);
+.header__logo {
+    flex-shrink: 0;
 }
+
+.header__actions {
+    display: flex;
+    column-gap: 40px;
+}
+
+.header__burger-button {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    color: var(--color-light);
+    row-gap: 4px;
+    width: 40px;
+    height: 40px;
+    padding-left: 8px;
+    color: var(--color-light);
+    background-color: transparent;
+    border: var(--border);
+    border-radius: var(--border-radius);
+}
+
+.header__burger-button:hover {
+    color: var(--color-light-gray);
+    border-color: currentColor;
+}
+
+.header__burger-button-line {
+    width: 6px;
+    height: 1px;
+    background-color: currentColor;
+    box-shadow: 16px 0 0 currentColor;
+}
+
 
 .header__menu-list {
     display: flex;
@@ -58,12 +145,24 @@ a:hover {
 }
 
 .header__menu-link {
-    padding: 0 20px;
     display: inline-flex;
     align-items: center;
-    font-size: 16px;
-    font-weight: 600;
+    column-gap: 7px;
+    font-size: 12px;
+    font-weight: 700;
     height: 90px;
     text-transform: uppercase;
     letter-spacing: 1.2px;
+}
+
+.header__menu-link.is-current::after {
+    content: "" ;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: currentColor;
+}
+
+@media screen {
+    
 }
