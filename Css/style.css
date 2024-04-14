@@ -58,7 +58,7 @@ body {
     padding-inline: var(--container-padding-x);
 }
 
-.visually--hidden {
+.visually-hidden {
     position: absolute !important;
     width: 1px !important;
     height: 1px !important;
@@ -76,6 +76,42 @@ h1, h2, h3, h4, h5, h6 {
     text-transform: uppercase;
 }
 
+.title-medium {
+    font-size: clamp(20px, 2.08vw, 40px);
+    line-height: 1.3;
+    color: var(--color-light);
+}
+
+.backdrop-title {
+    position: relative;
+    z-index: 2 ;
+}
+
+.backdrop-title::before {
+    content: '';
+    display: block;
+
+    position: absolute;
+    right: calc(100% + 8px);
+    color: var(--color-light);
+    width: 30px;
+    aspect-ratio: 1;
+    background: url('../Ico/plus.svg') center/contain no-repeat;
+}
+
+.backdrop-title::after {
+    content: attr(data-title);
+    position: absolute;
+    z-index: -1;
+    top: -0.4em;
+    left: -0.6em;
+    font-family: var(--font-family-accent);
+    font-size: 2.8em;
+    color: transparent;
+    -webkit-text-stroke: 0.5px var(--color-light-gray);
+    text-stroke: 1px var(--color-light-gray);
+}
+
 a, button, textarea, input, svg * {
     transition-duration: var(--transition-duration);
 }
@@ -90,6 +126,14 @@ a:hover {
     color: var(--color-light-gray);
 }
 
+p {
+    margin-block: 0;
+}
+
+p:not([class]):not(:last-child) {
+    margin-bottom: 24px;
+}
+
 .button {
     display: inline-flex;
     align-items: center;
@@ -99,11 +143,38 @@ a:hover {
     font-size: 12px;
     line-height: 2;
     letter-spacing: 1.2px;
+    text-decoration: none;
     text-transform: uppercase;
     font-weight: 700;
     background-color: var(--color-light);
     border: none;
     border-radius: var(--border-radius);
+}
+
+.button.transparent {
+    position: relative;
+    height: var(--input-height);
+    padding-left: 31px;
+    padding-right: 80px;
+    background-color: transparent;
+    border: var(--border);
+    align-items: center;
+}
+
+.button.transparent::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    height: 100%;
+    aspect-ratio: 1;
+    background: url('../Ico/arrow-top-right.svg') center/70% no-repeat;
+    border: var(--border);
+    border-radius: 50%
+}
+
+.button.transparent:hover {
+    color: var(--color-dark-gray);
+    background-color: var(--color-light-gray);
 }
 
 .button:hover {
@@ -250,6 +321,47 @@ a:hover {
     transition-duration: var(--transition-duration);
 }
 
+.motivation__card {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    column-gap: clamp(30px, 10.42vw, 200px);
+}
+
+.motivation__card-description {
+    max-width: 400px;
+}
+
+.motivation__card-description:not(:last-child) {
+    margin-bottom: 37px;
+}
+
+.motivation__item:nth-child(even) {
+    background-color: var(--color-dark-alternate);
+}
+
+.motivation__item:nth-child(even) .motivation__card {
+    flex-direction: row-reverse;
+}
+
+.motivation__card-title:not(:last-child) {
+    margin-bottom: 14px;
+}
+
+.motivation__card-image {
+    margin-block: -60px;
+}
+
+.motivation__card-body {
+    padding-left: 35px;
+}
+
+@media (max-width:1919px) {
+    .motivation__card-image {
+        margin-block: -20px;
+    }
+}
+
 @media (max-width: 1024px) {
     .header {
         flex-wrap: wrap;
@@ -278,6 +390,16 @@ a:hover {
 
     .banner {
         row-gap: 10px;
+    }
+
+    .motivation__card {
+        padding-block: 50px;
+    }
+
+    .motivation__card-image {
+        min-width: 30%;
+        height: auto;
+        margin-block: 0;
     }
 }
 
@@ -309,5 +431,22 @@ a:hover {
 
     .banner__info::before {
         margin-right: 10px;
+    }
+
+    .motivation__card, .motivation__item:nth-child(even) .motivation__card {
+        flex-direction: column-reverse;
+    }
+
+    .motivation__card {
+        padding-block: 30px;
+        row-gap: 30px;
+    }
+
+    .motivation__card-description:not(:last-child) {
+        margin-bottom: 20px;
+    }
+
+    .motivation__card-image {
+        max-width: 60%;
     }
 }
